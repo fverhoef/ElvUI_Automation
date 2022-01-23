@@ -1,7 +1,7 @@
 ## Interface: 20503
 ## Author: Neya
 ## Version: 0.1
-## Title: |cff1784d1ElvUI|r |cff03D3FFAutomation|r
+## Title: |cff1784d1ElvUI|r |cff05b562Automation|r
 ## Notes: Adds automation to ElvUI.
 ## RequiredDeps: ElvUI
 ## DefaultState: Enabled
