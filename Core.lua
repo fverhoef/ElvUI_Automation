@@ -22,39 +22,39 @@ function Addon:Initialize()
 end
 
 function Addon:RESURRECT_REQUEST(event, inviter)
-    if E.db[addonName].automation.enabled and E.db[addonName].automation.acceptResurrection then
+    if E.db[addonName].enabled and E.db[addonName].acceptResurrection then
         Addon:AcceptResurrection(inviter)
     end
 end
 
 function Addon:CONFIRM_SUMMON(event)
-    if E.db[addonName].automation.enabled and E.db[addonName].automation.acceptSummon then
+    if E.db[addonName].enabled and E.db[addonName].acceptSummon then
         Addon:AcceptSummon()
     end
 end
 
 function Addon:CONFIRM_LOOT_ROLL(event, rollID, rollType, confirmReason)
-    if E.db[addonName].automation.enabled and E.db[addonName].automation.disableLootRollConfirmation then
+    if E.db[addonName].enabled and E.db[addonName].disableLootRollConfirmation then
         ConfirmLootRoll(rollID, rollType)
         StaticPopup_Hide("CONFIRM_LOOT_ROLL")
     end
 end
 
 function Addon:LOOT_BIND_CONFIRM(event, lootSlot)
-    if E.db[addonName].automation.enabled and E.db[addonName].automation.disableLootBindConfirmation then
+    if E.db[addonName].enabled and E.db[addonName].disableLootBindConfirmation then
         ConfirmLootSlot(lootSlot)
         StaticPopup_Hide("LOOT_BIND")
     end
 end
 
 function Addon:MERCHANT_CONFIRM_TRADE_TIMER_REMOVAL(event)
-    if E.db[addonName].automation.enabled and E.db[addonName].automation.disableVendorRefundWarning then
+    if E.db[addonName].enabled and E.db[addonName].disableVendorRefundWarning then
         SellCursorItem()
     end
 end
 
 function Addon:MAIL_LOCK_SEND_ITEMS(event, attachSlot, itemLink)
-    if E.db[addonName].automation.enabled and E.db[addonName].automation.disableMailRefundWarning then
+    if E.db[addonName].enabled and E.db[addonName].disableMailRefundWarning then
         RespondMailLockSendItem(attachSlot, true)
     end
 end
@@ -62,7 +62,7 @@ end
 function Addon:CHAT_MSG_WHISPER(event, text, playerName, languageName, channelName, playerName2, specialFlags, zoneChannelID,
                                      channelIndex, channelBaseName, unused, lineID, guid, bnSenderID, isMobile, isSubtitle,
                                      hideSenderInLetterbox, supressRaidIcons)
-    if not E.db[addonName].automation.enabled or not E.db[addonName].automation.autoInvite then
+    if not E.db[addonName].enabled or not E.db[addonName].autoInvite then
         return
     end
 
@@ -74,7 +74,7 @@ end
 function Addon:CHAT_MSG_BN_WHISPER(event, text, playerName, languageName, channelName, playerName2, specialFlags,
                                         zoneChannelID, channelIndex, channelBaseName, unused, lineID, guid, bnSenderID, isMobile,
                                         isSubtitle, hideSenderInLetterbox, supressRaidIcons)
-    if not E.db[addonName].automation.enabled or not E.db[addonName].automation.autoInvite then
+    if not E.db[addonName].enabled or not E.db[addonName].autoInvite then
         return
     end
 
@@ -96,7 +96,7 @@ function Addon:PlayerCanInvite()
 end
 
 function Addon:TextMatchesAutoInvitePassword(text)
-    return string.lower(string.trim(text)) == string.lower(E.db[addonName].automation.autoInvitePassword)
+    return string.lower(string.trim(text)) == string.lower(E.db[addonName].autoInvitePassword)
 end
 
 function Addon:AcceptSummon()

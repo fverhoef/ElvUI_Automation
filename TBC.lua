@@ -16,7 +16,7 @@ function TBC:Initialize()
 end
 
 function TBC:UI_ERROR_MESSAGE(event, errorType, msg)
-    if E.db[addonName].automation.enabled and E.db[addonName].automation.standDismount then
+    if E.db[addonName].enabled and E.db[addonName].standDismount then
         if msg == SPELL_FAILED_NOT_STANDING or msg == ERR_CANTATTACK_NOTSTANDING or msg == ERR_LOOT_NOTSTANDING or msg ==
             ERR_TAXINOTSTANDING then
             DoEmote("stand")
@@ -32,7 +32,7 @@ function TBC:UI_ERROR_MESSAGE(event, errorType, msg)
 end
 
 function TBC:LOOT_READY(event)
-    if E.db[addonName].automation.enabled and E.db[addonName].automation.fastLoot then
+    if E.db[addonName].enabled and E.db[addonName].fastLoot then
         if GetTime() - fastLootDelay >= 0.3 then
             fastLootDelay = GetTime()
             if GetCVarBool("autoLootDefault") ~= IsModifiedClick("AUTOLOOTTOGGLE") then
