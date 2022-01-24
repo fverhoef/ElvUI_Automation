@@ -7,6 +7,7 @@ end
 
 local TBC = Addon:NewModule(addonName .. "TBC", "AceEvent-3.0")
 Addon.TBC = TBC
+local E, L, V, P, G = unpack(ElvUI)
 
 local fastLootDelay = 0
 
